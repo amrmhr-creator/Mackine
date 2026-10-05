@@ -32,7 +32,8 @@ export async function sendMail(mail: {
     host: SMTP_HOST,
     port,
     secure: port === 465,
-    auth: { user: SMTP_USER, pass: SMTP_PASSWORD },
+    // Google shows App Passwords in groups of 4 ("abcd efgh …"); the spaces aren't part of it.
+    auth: { user: SMTP_USER, pass: /gmail\.com$/i.test(SMTP_HOST) ? SMTP_PASSWORD.replace(/\s+/g, "") : SMTP_PASSWORD },
     // Fail within seconds (and get it logged) instead of hanging the request for minutes.
     connectionTimeout: 10_000,
     greetingTimeout: 10_000,
