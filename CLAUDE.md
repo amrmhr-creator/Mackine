@@ -23,7 +23,7 @@
 - المعاينة المحلية على بورت 3100 (`scripts/dev.mjs`).
 - الدومين لسه ما اتحددش (mackine.com معروض للبيع ومش بتاعهم). `SITE_URL` في hPanel بيتحط لما يتحدد.
 - الموقع مقفول على محركات البحث لحد الإطلاق: `ALLOW_INDEXING` في `next.config.mjs`.
-- **الإعدادات السرية في Environment variables على hPanel بس:** `SITE_URL`, `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASSWORD`, `LEADS_EMAIL`, `DATA_DIR` (اختياري). القايمة في `.env.example`.
+- **الإعدادات السرية في Environment variables على hPanel بس:** `SITE_URL`, `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASSWORD`, `LEADS_EMAIL`, `ADMIN_PASSWORD`, `ADMIN_EMAIL` (إيميله الشخصي)، `BACKUP_PASSWORD`، و `DATA_DIR` / `BACKUP_DIR` (اختياري). القايمة في `.env.example`. محلياً `.env.local` (مش في git) فيه `ADMIN_PASSWORD` تجريبي.
 
 ## خريطة الكود
 
@@ -39,10 +39,17 @@
 - الصفحات: `/`، `/products`، `/products/[slug]` (`components/views/CategoryView.tsx` عشان المعاينة في اللوحة تستخدمه)، `/about`، `/contact`، `/faq`، `/privacy`.
 - GEO: `lib/seo.ts` + `components/JsonLd.tsx` (Organization في كل الصفحات، و OfferCatalog للمنتجات والأقسام، و FAQPage، و BreadcrumbList)، و `app/sitemap.ts`، و `app/robots.ts`، و `app/llms.txt/route.ts`. كل صفحة قسم بتبدأ بـ "الإجابة باختصار".
 
+- **لوحة التحكم** `/admin` (نفس طريقة بلاد الدهب، من غير MySQL: كله ملفات JSON في فولدر البيانات):
+  - الدخول: `lib/admin-auth.ts` (كوكي موقّعة 7 أيام، و 5 محاولات غلط لكل IP و 30 للكل كل ربع ساعة في `login-failures.json`)، و `lib/admin-accounts.ts` (باسورده في `admins.json` بـ scrypt، ولحد ما يعمله الدخول بـ `ADMIN_PASSWORD`. "نسيت الباسورد" بيبعت لينك 30 دقيقة على `ADMIN_EMAIL`، ومحلياً من غير SMTP اللينك بيتكتب في سجل السيرفر).
+  - الصفحات في `app/admin/(panel)/`: الرئيسية، والطلبات (جديد/اتردّ عليه، وصور العميل من `/admin/files/…`، وتنزيل CSV يفتح في Excel)، والأقسام (`CategoryForm` مع `PairsEditor` للأنواع والأسئلة و `ImagePicker`)، والماركات، والأسئلة العامة، والصور (`lib/uploads.ts`: sharp لـ WebP 1600 و 480 في `uploads/` جوه فولدر البيانات، وبتتعرض من `app/uploads/[file]`)، والإعدادات، والسلة (`lib/trash.ts`، 30 يوم)، والنسخ الاحتياطية (`lib/backup.ts`: كل يوم على السيرفر في `mackine-backups`، وكل أسبوع ملف مقفول بـ `BACKUP_PASSWORD` على `ADMIN_EMAIL`)، وحسابي، والدليل.
+  - التعديلات في `lib/catalog-admin.ts` و `app/admin/actions.ts`. المعاينة: `/admin/preview/category/<slug>`. هيدر وفوتر الموقع مستخبيين في `/admin` (`components/SiteChrome.tsx`).
+
 ## الحالة (5 أكتوبر 2026)
 
-**خلص (المرحلة 1، محلي):** الموقع العام كله بالأقسام التسعة، والفورم بيحفظ وبيبعت إيميل، و GEO، والموبايل. اتجرّب محلياً (الصفحات، والفورم: رقم غلط، وملف مش مسموح، وطلب سليم، وفخ البوتات).
+**اترفع على GitHub (`f6388d5`):** الموقع العام. صاحب المشروع ربط GitHub بـ Hostinger.
 
-**الجاي: لوحة التحكم** (نفس طريقة بلاد الدهب، على مراحل): الدخول واسترجاع الباسورد، والطلبات وتنزيلها Excel، والأقسام، والماركات، والإعدادات والنصوص، ورفع الصور، والأسئلة، وسلة المهملات والنسخ الاحتياطية ودليل الاستخدام.
+**خلص محلي (commit، لسه ما اترفعش):** لوحة التحكم كلها. اتجرّبت محلياً: الدخول والخروج، وتعديل قسم (والغلط بيسيب المكتوب)، وإظهار ماركة (بتظهر في أقسامها بس)، والإعدادات (والإيميل الغلط بيترفض)، ورفع صورة (والملف المش صورة بيترفض) واختيارها لقسم، والمسح والسلة والترجيع، وطلب بصورة وظهوره في اللوحة وفتح الصورة، والـ Excel، والنسخة الاحتياطية، وإن ملفات اللوحة مقفولة من غير دخول. فاضل يتجرّب على Hostinger: `sharp`، والإيميلات (الطلبات، ونسيت الباسورد، والنسخة الأسبوعية).
+
+**قبل ما اللوحة تشتغل على Hostinger:** `ADMIN_PASSWORD` (12 حرف أو أكتر) و `ADMIN_EMAIL` و `BACKUP_PASSWORD` في hPanel، وبعدها نشر جديد.
 
 **ناقص من صاحب المشروع:** رقم التليفون (لو غير الواتساب) والإيميل والعنوان، والماركات اللي بيوردوها فعلاً، والدومين، وإيميل الشركة (SMTP) اللي الطلبات هتوصل عليه، وحكاية "مين احنا" الحقيقية.

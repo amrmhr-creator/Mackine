@@ -20,7 +20,17 @@ const nextConfig = {
       { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), usb=()" },
     ];
     const robots = ALLOW_INDEXING ? [] : [{ key: "X-Robots-Tag", value: "noindex, nofollow" }];
-    return [{ source: "/:path*", headers: [...security, ...robots] }];
+    return [
+      { source: "/:path*", headers: [...security, ...robots] },
+      // The admin panel is never stored by the browser or a proxy, and never indexed.
+      {
+        source: "/admin/:path*",
+        headers: [
+          { key: "Cache-Control", value: "no-store" },
+          ...(ALLOW_INDEXING ? [{ key: "X-Robots-Tag", value: "noindex, nofollow" }] : []),
+        ],
+      },
+    ];
   },
 };
 

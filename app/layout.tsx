@@ -3,6 +3,7 @@ import { IBM_Plex_Sans_Arabic, Readex_Pro } from "next/font/google";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import JsonLd from "@/components/JsonLd";
+import SiteChrome from "@/components/SiteChrome";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import { visibleBrands } from "@/lib/catalog-data";
 import { organizationLd } from "@/lib/seo";
@@ -34,10 +35,14 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html lang="ar" dir="rtl" className={`${display.variable} ${body.variable}`}>
       <body>
         <JsonLd data={organizationLd(settings, brands)} />
-        <Header />
+        <SiteChrome>
+          <Header />
+        </SiteChrome>
         <main>{children}</main>
-        <Footer />
-        <WhatsAppFloat />
+        <SiteChrome>
+          <Footer />
+          <WhatsAppFloat />
+        </SiteChrome>
       </body>
     </html>
   );
