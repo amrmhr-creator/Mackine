@@ -27,7 +27,7 @@ export const SETTINGS_GROUPS: FieldGroup[] = [
     title: "التواصل",
     note: "أي خانة فاضية مش بتظهر على الموقع. لو رقم الواتساب فاضي، زراير الواتساب بتستخبى.",
     fields: [
-      { key: "contact.whatsapp", label: "رقم الواتساب", fallback: "", ltr: true, hint: "زي 01001234567، أو برقم الدولة زي +966…" },
+      { key: "contact.whatsapp", label: "رقم الواتساب", fallback: "+20 106 565 9767", ltr: true, hint: "زي 01001234567، أو برقم الدولة زي +966…" },
       { key: "contact.phone", label: "رقم التليفون (لو غير الواتساب)", fallback: "", ltr: true },
       { key: "contact.email", label: "الإيميل اللي بيظهر على الموقع", fallback: "", ltr: true },
       { key: "contact.hours", label: "مواعيد العمل", fallback: "من السبت للخميس، من 9 الصبح لـ 5 العصر" },
