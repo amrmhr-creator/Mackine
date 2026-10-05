@@ -1,0 +1,31 @@
+# Original brand files (big, kept on the PC only). Web-ready copies live in public/.
+originals/
+Mackine Logo.png
+mackine banner.jpeg
+mackine card back.jpeg
+Capture.JPG
+
+# Browser data that ended up in this folder (not part of the site)
+*.indexeddb.leveldb/
+
+# Dependencies
+node_modules/
+
+# Build output
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Editor and OS cruft
+.claude/launch.json
+.vscode/
+.idea/
+Thumbs.db
+Desktop.ini
+*~

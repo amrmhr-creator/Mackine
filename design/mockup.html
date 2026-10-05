@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>ماكين Mackine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@500;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: RTL one-page site. Steel-blue workshop palette, one signal-amber accent for every call to action. */
+:root{
+  --bg:#f3f5f7; --surface:#ffffff; --ink:#14202b; --muted:#56636f; --line:#d9dfe5;
+  --steel:#1d3447; --steel-2:#27455d; --on-steel:#e8eef3;
+  --accent:#e8a317; --on-accent:#1a1300; --wa:#1f9d55;
+  --display:"Readex Pro","IBM Plex Sans Arabic",system-ui,sans-serif;
+  --body:"IBM Plex Sans Arabic",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0e161d; --surface:#152029; --ink:#e6ecf1; --muted:#9aa8b4; --line:#26343f;
+  --steel:#0a1218; --steel-2:#1b2a35; --on-steel:#dfe7ee;
+  --accent:#f0b02c; --on-accent:#1a1300; --wa:#2bb36a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0e161d; --surface:#152029; --ink:#e6ecf1; --muted:#9aa8b4; --line:#26343f;
+  --steel:#0a1218; --steel-2:#1b2a35; --on-steel:#dfe7ee;
+  --accent:#f0b02c; --on-accent:#1a1300; --wa:#2bb36a; color-scheme:dark}
+
+*{box-sizing:border-box}
+img{max-width:100%}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;direction:rtl}
+.wrap{max-width:1120px;margin-inline:auto;padding-inline:20px}
+h1,h2,h3{font-family:var(--display);line-height:1.3;text-wrap:balance;margin:0}
+p{margin:0}
+a{color:inherit}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:6px;font-weight:600;text-decoration:none;border:0;font:inherit;font-weight:600;cursor:pointer}
+.btn:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.btn-accent{background:var(--accent);color:var(--on-accent)}
+.btn-wa{background:var(--wa);color:#fff}
+.btn-ghost{background:transparent;color:var(--on-steel);border:1px solid color-mix(in srgb,var(--on-steel) 35%,transparent)}
+.mono{font-family:var(--mono);direction:ltr;unicode-bidi:isolate}
+
+/* header */
+header{background:var(--steel);color:var(--on-steel);position:sticky;top:0;z-index:5}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:22px}
+.logo small{font-family:var(--mono);font-size:12px;opacity:.7;letter-spacing:.08em}
+.nav ul{display:flex;gap:24px;list-style:none;margin:0;padding:0;font-size:15px}
+.nav ul a{text-decoration:none;opacity:.85}
+@media (max-width:760px){.nav ul{display:none}}
+
+/* hero */
+.hero{background:linear-gradient(180deg,var(--steel),var(--steel-2));color:var(--on-steel);padding-block:56px 72px}
+.hero .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(30px,4.6vw,50px);font-weight:700}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p.lead{margin-top:16px;font-size:18px;max-width:34em;opacity:.9}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.spec{margin-top:28px;display:flex;flex-wrap:wrap;gap:8px;font-size:13px}
+.spec span{border:1px dashed color-mix(in srgb,var(--on-steel) 35%,transparent);padding:3px 10px;border-radius:4px}
+.hero svg{width:100%;max-width:360px;justify-self:center}
+@media (max-width:760px){.hero .wrap{grid-template-columns:1fr}.hero svg{max-width:220px;order:-1}}
+
+section{padding-block:64px}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:.06em;color:var(--muted)}
+.head{display:flex;flex-direction:column;gap:8px;margin-bottom:32px;max-width:40em}
+.head h2{font-size:clamp(24px,3vw,34px)}
+.head p{color:var(--muted)}
+
+/* products */
+.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media (max-width:900px){.cats{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:480px){.cats{grid-template-columns:1fr}}
+.cat{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:22px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.cat h3{font-size:19px}
+.cat p{color:var(--muted);font-size:14.5px}
+.cat .codes{margin-top:auto;padding-top:10px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted)}
+.cat svg{width:40px;height:40px}
+
+/* how */
+.how{background:var(--surface);border-block:1px solid var(--line)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;counter-reset:s}
+@media (max-width:760px){.steps{grid-template-columns:1fr}}
+.step{display:flex;flex-direction:column;gap:8px;counter-increment:s}
+.step::before{content:counter(s);font-family:var(--mono);font-size:14px;width:34px;height:34px;display:grid;place-items:center;border-radius:50%;background:var(--accent);color:var(--on-accent)}
+.step h3{font-size:19px}
+.step p{color:var(--muted)}
+
+/* why */
+.why{display:grid;grid-template-columns:repeat(2,1fr);gap:20px 48px}
+@media (max-width:760px){.why{grid-template-columns:1fr}}
+.why div{border-inline-start:3px solid var(--accent);padding-inline-start:16px}
+.why h3{font-size:18px;margin-bottom:4px}
+.why p{color:var(--muted)}
+
+.sectors{display:flex;flex-wrap:wrap;gap:10px;margin-top:40px}
+.sectors span{background:var(--surface);border:1px solid var(--line);padding:6px 14px;border-radius:999px;font-size:14.5px}
+.brands{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:24px;font-family:var(--display);font-weight:700;font-size:18px;color:var(--muted);letter-spacing:.04em}
+.note{font-size:13px;color:var(--muted);margin-top:10px}
+
+/* form */
+.quote{background:var(--steel);color:var(--on-steel)}
+.quote .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px}
+@media (max-width:860px){.quote .wrap{grid-template-columns:1fr}}
+.quote .head p{color:inherit;opacity:.8}
+.contact-list{display:flex;flex-direction:column;gap:14px;margin-top:8px}
+.contact-list div{display:flex;flex-direction:column}
+.contact-list small{opacity:.7}
+form{background:var(--surface);color:var(--ink);border-radius:10px;padding:28px;display:grid;grid-template-columns:1fr 1fr;gap:16px;min-width:0}
+@media (max-width:560px){form{grid-template-columns:1fr;padding:20px}}
+.f{display:flex;flex-direction:column;gap:6px;min-width:0}
+.f.full{grid-column:1/-1}
+label{font-size:14px;font-weight:600}
+input,textarea,select{font:inherit;font-size:15px;padding:10px 12px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink);width:100%}
+textarea{min-height:96px;resize:vertical}
+.form-foot{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:14px}
+.ok{color:var(--wa);font-weight:600}
+
+footer{background:var(--steel);color:var(--on-steel);border-top:1px solid color-mix(in srgb,var(--on-steel) 15%,transparent);padding-block:24px;font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;opacity:.8}
+
+.wa-float{position:fixed;inset-inline-start:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));width:56px;height:56px;border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 6px 18px rgba(0,0,0,.25);z-index:6}
+.wa-float svg{width:30px;height:30px;fill:#fff}
+@media (prefers-reduced-motion:no-preference){.hero .ring{transform-origin:180px 180px;animation:spin 40s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo">
+      <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="13" fill="none" stroke="var(--accent)" stroke-width="3"/><circle cx="15" cy="15" r="5" fill="var(--accent)"/></svg>
+      ماكين <small>MACKINE</small>
+    </div>
+    <ul>
+      <li><a href="#products">المنتجات</a></li>
+      <li><a href="#how">إزاي بنشتغل</a></li>
+      <li><a href="#why">ليه ماكين</a></li>
+      <li><a href="#quote">تواصل معانا</a></li>
+    </ul>
+    <a class="btn btn-accent" href="#quote">اطلب عرض سعر</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <h1>قطعة الغيار اللي مصنعك محتاجها، <em>بالكمية اللي تحتاجها.</em></h1>
+      <p class="lead">بدل ما فريق الصيانة يلف على التجار، ابعت لنا رقم القطعة أو صورتها، واحنا ندوّر ونجهز لك عرض سعر ونورّد لحد باب المصنع. رولمان بلي، سيور، وقطع غيار المعدات الصناعية.</p>
+      <div class="ctas">
+        <a class="btn btn-accent" href="#quote">اطلب عرض سعر</a>
+        <a class="btn btn-wa" href="https://wa.me/201000000000">كلمنا واتساب</a>
+      </div>
+      <div class="spec"><span class="mono">6205-2RS</span><span class="mono">22216 E</span><span class="mono">SPB 2000</span><span class="mono">B-62</span><span class="mono">UCP 208</span></div>
+    </div>
+    <svg viewBox="0 0 360 360" role="img" aria-label="رسم لرولمان بلي">
+      <circle cx="180" cy="180" r="170" fill="none" stroke="var(--on-steel)" stroke-opacity=".25" stroke-width="2"/>
+      <circle cx="180" cy="180" r="150" fill="none" stroke="var(--on-steel)" stroke-opacity=".6" stroke-width="10"/>
+      <circle cx="180" cy="180" r="80" fill="none" stroke="var(--on-steel)" stroke-opacity=".6" stroke-width="10"/>
+      <circle cx="180" cy="180" r="48" fill="none" stroke="var(--on-steel)" stroke-opacity=".25" stroke-width="2" stroke-dasharray="4 6"/>
+      <g class="ring" fill="var(--accent)">
+        <circle cx="180" cy="65" r="26"/><circle cx="261" cy="99" r="26"/><circle cx="295" cy="180" r="26"/><circle cx="261" cy="261" r="26"/>
+        <circle cx="180" cy="295" r="26"/><circle cx="99" cy="261" r="26"/><circle cx="65" cy="180" r="26"/><circle cx="99" cy="99" r="26"/>
+      </g>
+    </svg>
+  </div>
+</div>
+
+<section id="products">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">اللي بنورّده</span>
+      <h2>قطع الغيار اللي خطوط الإنتاج ما تقدرش تستنى عليها</h2>
+      <p>عندك رقم قطعة، أو مقاس، أو حتى صورة للقطعة القديمة؟ ده كفاية نبدأ بيه.</p>
+    </div>
+    <div class="cats">
+      <div class="cat">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="17" fill="none" stroke="var(--accent)" stroke-width="3"/><circle cx="20" cy="20" r="8" fill="none" stroke="var(--accent)" stroke-width="3"/></svg>
+        <h3>رولمان بلي</h3>
+        <p>كور، أسطوانات، مخروطي، وكراسي بلي لكل أنواع الماكينات.</p>
+        <div class="codes mono">6000 · 6200 · 22200 · 30200 · UC</div>
+      </div>
+      <div class="cat">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><rect x="3" y="12" width="34" height="16" rx="8" fill="none" stroke="var(--accent)" stroke-width="3"/><circle cx="11" cy="20" r="3" fill="var(--accent)"/><circle cx="29" cy="20" r="3" fill="var(--accent)"/></svg>
+        <h3>سيور</h3>
+        <p>سيور V وسيور مسننة وسيور ناقلة، بالمقاس والطول المطلوب.</p>
+        <div class="codes mono">A · B · C · SPA · SPB · XPZ · HTD</div>
+      </div>
+      <div class="cat">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="9" fill="none" stroke="var(--accent)" stroke-width="3"/><path d="M20 3v6M20 31v6M3 20h6M31 20h6M8 8l4 4M28 28l4 4M32 8l-4 4M12 28l-4 4" stroke="var(--accent)" stroke-width="3"/></svg>
+        <h3>نقل حركة</h3>
+        <p>جنازير، تروس، بكر، كوبلنج، وجلب.</p>
+        <div class="codes mono">08B · 10B · 12B · SPZ pulley</div>
+      </div>
+      <div class="cat">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M8 32 25 15M22 8a7 7 0 0 0 10 10l-4-1-2-2-1-4z" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linejoin="round"/></svg>
+        <h3>قطع غيار عامة</h3>
+        <p>أويل سيل، جوانات، شحوم، وأي قطعة تانية تحتاجها خطوط الإنتاج.</p>
+        <div class="codes">ابعت الطلب ونرد عليك</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how" class="how">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">إزاي بنشتغل</span>
+      <h2>من الطلب لحد باب المصنع في 3 خطوات</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><h3>ابعت طلبك</h3><p>رقم القطعة، أو صورتها، أو المقاس، والكمية اللي محتاجها. بالفورم أو على الواتساب.</p></div>
+      <div class="step"><h3>استلم عرض السعر</h3><p>بنراجع الطلب ونرجع لك بعرض سعر واضح وميعاد توريد محدد.</p></div>
+      <div class="step"><h3>نورّد لك</h3><p>بعد الموافقة بنجهز الكمية ونوصلها لحد المصنع أو المخزن.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">ليه ماكين</span>
+      <h2>وفّر وقت فريق الصيانة، وسيب التدوير علينا</h2>
+    </div>
+    <div class="why">
+      <div><h3>طلب واحد بدل عشر مكالمات</h3><p>قايمة القطع كلها مع جهة واحدة، بدل ما تقسمها على أكتر من تاجر.</p></div>
+      <div><h3>أي كمية</h3><p>من قطعة واحدة لماكينة واقفة، لحد توريدات الصيانة الدورية للمصنع كله.</p></div>
+      <div><h3>ماركات أصلية وبدائل</h3><p>بنوفر لك الماركة المطلوبة، ولو مش متاحة بنقترح بديل مكافئ بنفس المواصفات.</p></div>
+      <div><h3>أسعار تنافسية وعرض مكتوب</h3><p>عرض سعر واضح وميعاد توريد ملتزمين بيه، وفاتورة رسمية.</p></div>
+    </div>
+    <div class="sectors">
+      <span>مصانع الأغذية</span><span>الأسمنت ومواد البناء</span><span>النسيج</span><span>البلاستيك والتغليف</span><span>البترول والغاز</span><span>ورش الصيانة</span>
+    </div>
+    <div class="brands"><span>SKF</span><span>FAG</span><span>NSK</span><span>NTN</span><span>TIMKEN</span><span>GATES</span><span>OPTIBELT</span></div>
+    <p class="note">أسماء الماركات هنا مثال، هنعدلها حسب الماركات اللي ماكين بتوردها فعلاً.</p>
+  </div>
+</section>
+
+<section id="quote" class="quote">
+  <div class="wrap">
+    <div>
+      <div class="head">
+        <span class="eyebrow" style="color:inherit;opacity:.7">اطلب عرض سعر</span>
+        <h2>قول لنا محتاج إيه، ونرجع لك بالسعر</h2>
+        <p>املا الفورم أو ابعت صورة القطعة على الواتساب مباشرة.</p>
+      </div>
+      <div class="contact-list">
+        <div><small>واتساب وموبايل</small><span class="mono">+20 100 000 0000</span></div>
+        <div><small>إيميل</small><span class="mono">sales@mackine.com</span></div>
+        <div><small>العنوان</small><span>القاهرة، مصر</span></div>
+        <a class="btn btn-wa" href="https://wa.me/201000000000" style="align-self:flex-start">ابعت على الواتساب</a>
+      </div>
+    </div>
+    <form id="qf">
+      <div class="f"><label for="n">الاسم</label><input id="n" value="م. أحمد سمير"></div>
+      <div class="f"><label for="c">الشركة / المصنع</label><input id="c" value="مصنع النيل للأغذية"></div>
+      <div class="f"><label for="p">رقم الموبايل (واتساب)</label><input id="p" class="mono" value="01001234567" style="text-align:right"></div>
+      <div class="f"><label for="t">نوع المنتج</label><select id="t"><option>رولمان بلي</option><option>سيور</option><option>نقل حركة</option><option>قطع غيار عامة</option></select></div>
+      <div class="f full"><label for="d">القطع المطلوبة والكميات</label><textarea id="d">6205-2RS × 40
+22216 E × 6</textarea></div>
+      <div class="f full"><label for="img">صورة القطعة (اختياري)</label><input id="img" type="file" accept="image/*"></div>
+      <div class="form-foot"><button class="btn btn-accent" type="submit">ابعت الطلب</button><span id="ok" class="ok" hidden>ده نموذج للعرض بس، الفورم الحقيقي هيوصّل الطلب لإيميلكم.</span></div>
+    </form>
+  </div>
+</section>
+
+<footer><div class="wrap"><span>© 2026 ماكين Mackine لتوريد قطع الغيار الصناعية</span><span>رولمان بلي · سيور · قطع غيار مصانع</span></div></footer>
+
+<a class="wa-float" href="https://wa.me/201000000000" aria-label="واتساب"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.4z"/></svg></a>
+
+<script>
+document.getElementById('qf').addEventListener('submit',function(e){e.preventDefault();document.getElementById('ok').hidden=false;});
+</script>
+
+</body>
+</html>
