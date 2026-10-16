@@ -7,7 +7,7 @@ import WhatsAppIcon from "./WhatsAppIcon";
 /** The "request a quote" band at the bottom of every page (the header button jumps here). */
 export default async function QuoteSection({
   category,
-  title = "قولّنا محتاج إيه، ونرجعلك بالسعر",
+  title = "اطلب عرض سعر",
 }: {
   category?: { slug: string; name: string };
   title?: string;
@@ -18,11 +18,10 @@ export default async function QuoteSection({
     <section id="quote" className="quote">
       <div className="wrap quote-grid">
         <div>
-          <span className="eyebrow">اطلب عرض سعر</span>
           <h2>{title}</h2>
           <p className="quote-lead">
-            املا الفورم{s.whatsappNumber ? " أو ابعت صورة القطعة على الواتساب مباشرة" : ""}. كل ما التفاصيل تبقى أوضح، عرض السعر
-            بيوصلك أسرع.
+            اكتب رقم كل قطعة أو مقاسها والكمية{s.whatsappNumber ? "، أو ابعت صورتها على الواتساب" : ""}. بنرد بعرض سعر مكتوب فيه
+            السعر وميعاد التوريد.
           </p>
           <ul className="contact-list">
             {s.whatsappNumber && (
