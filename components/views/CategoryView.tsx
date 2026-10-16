@@ -51,6 +51,33 @@ export default function CategoryView({ c, brands }: { c: Category; brands: Brand
               </>
             )}
 
+            {c.table && c.table.rows.length > 1 && (
+              <>
+                <h2 className="sub-head">{c.table.title}</h2>
+                <div className="size-table">
+                  <table>
+                    <thead>
+                      <tr>
+                        {c.table.rows[0].map((cell, i) => (
+                          <th key={i}>{cell}</th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {c.table.rows.slice(1).map((row, r) => (
+                        <tr key={r}>
+                          {row.map((cell, i) => (
+                            <td key={i}>{cell}</td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                {c.table.note && <p className="table-note">{c.table.note}</p>}
+              </>
+            )}
+
             {c.faq.length > 0 && (
               <>
                 <h2 className="sub-head">أسئلة عن {c.name}</h2>
@@ -100,7 +127,7 @@ export default function CategoryView({ c, brands }: { c: Category; brands: Brand
         </div>
       </section>
 
-      <QuoteSection category={{ slug: c.slug, name: c.name }} title={`محتاج ${c.name}؟ قولّنا الرقم والكمية`} />
+      <QuoteSection category={{ slug: c.slug, name: c.name }} title={`اطلب عرض سعر: ${c.name}`} />
     </>
   );
 }

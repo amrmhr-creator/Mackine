@@ -24,7 +24,7 @@ import {
   setCategoryVisible,
   setLeadStatus,
 } from "@/lib/catalog-admin";
-import { ICONS, type IconName } from "@/lib/categories";
+import { ICONS, parseTable, type IconName } from "@/lib/categories";
 import { escapeHtml, mailConfigured, sendMail } from "@/lib/mail";
 import { SettingsError, saveSettings } from "@/lib/settings";
 import { SITE } from "@/lib/site";
@@ -164,6 +164,11 @@ export async function saveCategoryAction(prev: FormState, formData: FormData): P
   if (types.some((t) => !t.title || !t.text)) return fail("كل نوع محتاج اسم وشرح (أو امسح السطر الفاضي).");
   if (faq.some((q) => !q.title || !q.text)) return fail("كل سؤال محتاج إجابة (أو امسح السطر الفاضي).");
 
+  const tableRows = parseTable(text(formData, "tableRows", 6000)).slice(0, 60);
+  const tableTitle = text(formData, "tableTitle", 120);
+  if (tableRows.length === 1) return fail("الجدول محتاج سطر العناوين وسطر واحد على الأقل تحته (أو امسح الجدول كله).");
+  if (tableRows.length > 1 && !tableTitle) return fail("اكتب عنوان للجدول.");
+
   let slug: string;
   try {
     slug = await saveCategory(
@@ -176,6 +181,7 @@ export async function saveCategoryAction(prev: FormState, formData: FormData): P
         types: types.map((t) => ({ name: t.title, text: t.text })),
         codes: lines(text(formData, "codes", 2000)).slice(0, 40),
         faq: faq.map((q) => ({ q: q.title, a: q.text })),
+        table: tableRows.length > 1 ? { title: tableTitle, note: text(formData, "tableNote", 400), rows: tableRows } : undefined,
         image: photo(formData, "image"),
         visible: values.visible === "on",
         seoTitle: text(formData, "seoTitle", 70) || undefined,

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useActionState } from "react";
 import ImagePicker, { type PickerImage } from "@/components/admin/ImagePicker";
 import PairsEditor from "@/components/admin/PairsEditor";
-import { ICONS, ICON_LABELS, type Category } from "@/lib/categories";
+import { ICONS, ICON_LABELS, tableText, type Category } from "@/lib/categories";
 import { saveCategoryAction, type FormState } from "../../actions";
 
 /** Add or edit a category. On an error the typed values come back so nothing is lost. */
@@ -68,6 +68,25 @@ export default function CategoryForm({ category, images }: { category?: Category
         أمثلة لأرقام القطع <small>(كل رقم في سطر)</small>
         <textarea name="codes" rows={5} dir="ltr" defaultValue={v("codes", c?.codes.join("\n"))} />
       </label>
+
+      <fieldset>
+        <legend>جدول مقاسات (اختياري)</legend>
+        <p className="muted small">
+          كل سطر صف في الجدول، والخانات بينها علامة | . أول سطر هو العناوين. لو مسحت كل السطور، الجدول مش بيظهر.
+        </p>
+        <label>
+          عنوان الجدول
+          <input name="tableTitle" maxLength={120} defaultValue={v("tableTitle", c?.table?.title)} />
+        </label>
+        <label>
+          سطر شرح تحت الجدول <small>(اختياري)</small>
+          <textarea name="tableNote" maxLength={400} rows={2} defaultValue={v("tableNote", c?.table?.note)} />
+        </label>
+        <label>
+          الصفوف
+          <textarea name="tableRows" rows={8} dir="ltr" defaultValue={v("tableRows", c?.table ? tableText(c.table.rows) : "")} />
+        </label>
+      </fieldset>
 
       <fieldset>
         <legend>أسئلة عن القسم</legend>

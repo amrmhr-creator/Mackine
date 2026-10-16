@@ -8,7 +8,7 @@ import { breadcrumbLd, catalogLd } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "المنتجات",
-  description: "كل اللي ماكين بتورّده للمصانع: رولمان بلي، وكراسي بلي، وحركة خطية، وبول سكرو، وجلب، وسيور، ونقل حركة، وأويل سيل، وقطع غيار عامة.",
+  description: "كل اللي ماكين بتورّده للمصانع: رولمان بلي وكراسي بلي، وحركة خطية وبول سكرو، وسيور، وجنازير وتروس، وأويل سيل وشحوم، وقطع غيار عامة.",
 };
 
 export default async function ProductsPage() {

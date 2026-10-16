@@ -20,7 +20,7 @@ const b = (name: string, categories: string[]): Brand => ({
   visible: false,
 });
 
-const BEARINGS = ["bearings", "bearing-units"];
+const BEARINGS = ["bearings"];
 
 export const DEFAULT_BRANDS: Brand[] = [
   b("SKF", BEARINGS),
@@ -31,9 +31,9 @@ export const DEFAULT_BRANDS: Brand[] = [
   b("KOYO", BEARINGS),
   b("ZWZ", BEARINGS),
   b("HTB", ["bearings", "linear-motion"]),
-  b("HIWIN", ["linear-motion", "ball-screws"]),
-  b("THK", ["linear-motion", "ball-screws"]),
-  b("PMI", ["linear-motion", "ball-screws"]),
+  b("HIWIN", ["linear-motion"]),
+  b("THK", ["linear-motion"]),
+  b("PMI", ["linear-motion"]),
   b("GATES", ["belts"]),
   b("OPTIBELT", ["belts"]),
   b("CONTITECH", ["belts"]),
