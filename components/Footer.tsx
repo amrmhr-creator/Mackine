@@ -39,7 +39,7 @@ export default async function Footer() {
         <div>
           <h2>ماكين</h2>
           <ul>
-            {[...NAV.filter((l) => l.href !== "/products"), ...LEGAL].map((l) => (
+            {[...NAV.filter((l) => !["/products", "/#brands"].includes(l.href)), ...LEGAL].map((l) => (
               <li key={l.href}>
                 <Link href={l.href}>{l.label}</Link>
               </li>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Sans_Arabic, Readex_Pro } from "next/font/google";
+import { IBM_Plex_Mono, IBM_Plex_Sans_Arabic, Readex_Pro } from "next/font/google";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import JsonLd from "@/components/JsonLd";
@@ -12,6 +12,7 @@ import { SITE } from "@/lib/site";
 import "./globals.css";
 
 const display = Readex_Pro({ subsets: ["arabic", "latin"], weight: ["500", "700"], display: "swap", variable: "--font-display" });
+const mono = IBM_Plex_Mono({ subsets: ["latin"], weight: ["400", "500"], display: "swap", variable: "--font-mono" });
 const body = IBM_Plex_Sans_Arabic({ subsets: ["arabic", "latin"], weight: ["400", "500", "600"], display: "swap", variable: "--font-body" });
 
 // Texts, contact details and the catalog come from the admin panel, so pages render on request.
@@ -32,7 +33,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const [settings, brands] = await Promise.all([getSettings(), visibleBrands()]);
   return (
-    <html lang="ar" dir="rtl" className={`${display.variable} ${body.variable}`}>
+    <html lang="ar" dir="rtl" className={`${display.variable} ${body.variable} ${mono.variable}`}>
       <body>
         <JsonLd data={organizationLd(settings, brands)} />
         <SiteChrome>
