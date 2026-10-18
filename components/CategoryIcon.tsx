@@ -60,6 +60,20 @@ const PATHS: Record<IconName, React.ReactNode> = {
       <path d="M20 5v6M20 29v6" strokeDasharray="2 2" />
     </>
   ),
+  drill: (
+    <>
+      <path d="M5 12h20v8H5z" strokeLinejoin="round" />
+      <path d="M25 14h6M31 16h5" />
+      <path d="M10 20l-2 13h7l2-13" strokeLinejoin="round" />
+    </>
+  ),
+  gear: (
+    <>
+      <circle cx="20" cy="20" r="6" />
+      <path d="M20 5v5M20 30v5M5 20h5M30 20h5M9.4 9.4l3.5 3.5M27.1 27.1l3.5 3.5M30.6 9.4l-3.5 3.5M12.9 27.1l-3.5 3.5" />
+      <circle cx="20" cy="20" r="11" />
+    </>
+  ),
   wrench: <path d="M8 32 24 16M22 7a7 7 0 0 0 9.5 9.5l-3.6-.9-1.8-1.8-.9-3.6z" strokeLinejoin="round" />,
 };
 

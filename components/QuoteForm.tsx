@@ -27,6 +27,8 @@ export default function QuoteForm({
     const form = e.currentTarget;
     const data = new FormData(form);
     data.set("page", window.location.pathname);
+    // The short form sends one part and its quantity as the request details.
+    if (short) data.set("details", [data.get("part"), data.get("qty")].filter(Boolean).join(" × "));
     setError("");
     setState("sending");
     try {
@@ -56,10 +58,16 @@ export default function QuoteForm({
   return (
     <form className={`quote-form${short ? " short" : ""}`} onSubmit={onSubmit}>
       {short && (
-        <div className="f full">
-          <label htmlFor={id("details")}>رقم القطعة أو مقاسها، والكمية</label>
-          <textarea id={id("details")} name="details" required maxLength={3000} rows={3} placeholder={"6205-2RS × 40\nسير B-62 × 6"} dir="auto" />
-        </div>
+        <>
+          <div className="f part">
+            <label htmlFor={id("part")}>رقم القطعة أو المقاس</label>
+            <input id={id("part")} name="part" required maxLength={200} placeholder="6205-2RS · B-62 · 08B-1" dir="ltr" className="ltr-input mono" />
+          </div>
+          <div className="f qty">
+            <label htmlFor={id("qty")}>الكمية</label>
+            <input id={id("qty")} name="qty" maxLength={20} inputMode="numeric" />
+          </div>
+        </>
       )}
       <div className="f">
         <label htmlFor={id("name")}>الاسم</label>
@@ -118,13 +126,17 @@ export default function QuoteForm({
         <button className="btn btn-red" type="submit" disabled={state === "sending"}>
           {state === "sending" ? "جاري الإرسال…" : "ابعت الطلب"}
         </button>
-        {short && <small className="form-hint">عندك صورة للقطعة؟ ارفعها من الفورم اللي في آخر الصفحة.</small>}
         {error && (
           <p className="form-error" role="alert">
             {error}
           </p>
         )}
       </div>
+      {short && (
+        <small className="form-hint">
+          قايمة كاملة أو صورة للقطعة؟ <a href="#quote">ارفعها من الفورم الكامل</a>.
+        </small>
+      )}
     </form>
   );
 }
