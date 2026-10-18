@@ -19,7 +19,7 @@ export function organizationLd(s: SiteSettings, brands: Brand[]) {
     ...(s.business.taxId && { taxID: s.business.taxId }),
     description: s.tagline,
     url: SITE.url,
-    logo: `${SITE.url}/logo.png`,
+    logo: `${SITE.url}/logo.svg`,
     ...(phone && { telephone: phone }),
     ...(s.email && { email: s.email }),
     areaServed: "EG",

@@ -19,11 +19,11 @@ function siteUrl(): string {
 }
 
 export const SITE = {
-  name: "ماكين",
+  name: "مكين",
   nameEn: "Mackine",
   /** The public address. Set SITE_URL in hPanel, e.g. https://mackine.net */
   url: siteUrl(),
-  tagline: "ماكين لتوريد قطع الغيار الصناعية: رولمان بلي، وسيور، وجنازير، وأويل سيل، وعدد، وقطع غيار المصانع",
+  tagline: "مكين لتوريد قطع الغيار الصناعية: رولمان بلي، وسيور، وجنازير، وأويل سيل، وعدد، وقطع غيار المصانع",
 };
 
 export type NavLink = { href: string; label: string };

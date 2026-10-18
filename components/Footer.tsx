@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import Logo from "@/components/Logo";
 import { visibleCategories } from "@/lib/catalog-data";
 import { categoryHref } from "@/lib/categories";
 import { getSettings } from "@/lib/settings";
@@ -12,7 +12,7 @@ export default async function Footer() {
     <footer className="site-footer">
       <div className="wrap footer-grid">
         <div>
-          <Image src="/logo-white.png" alt={SITE.nameEn} width={170} height={44} />
+          <Logo />
           <p className="footer-tagline">{s.tagline}</p>
           {s.social.length > 0 && (
             <ul className="social">
@@ -37,7 +37,7 @@ export default async function Footer() {
           </ul>
         </div>
         <div>
-          <h2>ماكين</h2>
+          <h2>مكين</h2>
           <ul>
             {[...NAV.filter((l) => !["/products", "/#brands"].includes(l.href)), ...LEGAL].map((l) => (
               <li key={l.href}>

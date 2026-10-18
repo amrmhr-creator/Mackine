@@ -211,7 +211,7 @@ export default async function Home() {
             </p>
           )}
           <p className="more-link">
-            <Link href="/about">اعرف أكتر عن ماكين ←</Link>
+            <Link href="/about">اعرف أكتر عن مكين ←</Link>
           </p>
         </div>
       </section>

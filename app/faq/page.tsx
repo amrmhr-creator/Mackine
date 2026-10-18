@@ -10,7 +10,7 @@ import { breadcrumbLd, faqLd } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "الأسئلة الشائعة",
-  description: "إزاي تطلب عرض سعر من ماكين، ولو مش عارف رقم القطعة تعمل إيه، والكميات والماركات والفواتير والتوريد.",
+  description: "إزاي تطلب عرض سعر من مكين، ولو مش عارف رقم القطعة تعمل إيه، والكميات والماركات والفواتير والتوريد.",
 };
 
 export default async function FaqPage() {

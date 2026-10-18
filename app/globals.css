@@ -57,7 +57,13 @@ a { color: var(--blue); }
 .site-header { background: var(--surface); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 20; }
 .nav { display: flex; align-items: center; gap: 24px; min-height: 72px; }
 .brand { display: flex; flex-shrink: 0; }
-.brand img { width: 160px; height: auto; }
+.brand { color: var(--blue); text-decoration: none; }
+/* Logo: the bearing mark, then MACKINE over مكين (English a little bigger). Sized by its font-size. */
+.logo { display: inline-flex; align-items: center; gap: 0.55em; font-size: 20px; line-height: 1; }
+.logo-mark { width: 2.4em; height: 2.4em; flex-shrink: 0; }
+.logo-words { display: flex; flex-direction: column; align-items: flex-start; gap: 0.12em; font-family: var(--display); font-weight: 700; }
+.logo-en { font-size: 1em; letter-spacing: 0.04em; }
+.logo-ar { font-size: 0.87em; }
 .nav-links { display: flex; gap: 26px; list-style: none; margin: 0; padding: 0; }
 .nav-links a { color: var(--ink); text-decoration: none; font-weight: 500; }
 .nav-links a:hover { color: var(--red); }
@@ -71,7 +77,7 @@ a { color: var(--blue); }
 @media (max-width: 860px) {
   .nav nav { display: none; }
   .menu { display: block; }
-  .brand img { width: 130px; }
+  .brand .logo { font-size: 17px; }
   .nav { gap: 12px; }
   .nav-end .btn { padding: 9px 14px; font-size: 14px; }
 }
@@ -289,6 +295,7 @@ section.tight { padding-block: 32px 0; }
 @media (max-width: 860px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 520px) { .footer-grid { grid-template-columns: 1fr; } }
 .site-footer h2 { font-size: 16px; margin-bottom: 12px; }
+.site-footer .logo { color: #fff; font-size: 19px; }
 .site-footer ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; opacity: 0.88; }
 .site-footer .social { flex-direction: row; flex-wrap: wrap; gap: 14px; margin-top: 14px; }
 .footer-tagline { margin-top: 14px; opacity: 0.8; max-width: 26em; }
@@ -376,7 +383,7 @@ section.tight { padding-block: 32px 0; }
 .admin-image-item label { display: flex; flex-direction: column; gap: 4px; font-size: 14px; }
 .admin-image-item input { font: inherit; padding: 6px 10px; border: 1px solid var(--line); border-radius: 6px; }
 .admin-login { max-width: 420px; margin: 64px auto; padding: 32px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; display: flex; flex-direction: column; gap: 16px; align-items: stretch; text-align: center; }
-.admin-login img { margin-inline: auto; }
+.admin-login .logo { margin-inline: auto; color: var(--blue); font-size: 22px; }
 .admin-login .admin-form { max-width: none; text-align: start; }
 .preview-bar { background: #fff7e0; border-bottom: 1px solid #f0d58a; padding: 10px 20px; text-align: center; font-weight: 600; position: sticky; top: 0; z-index: 25; }
 .guide h2 { margin-top: 28px; }

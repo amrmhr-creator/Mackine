@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build --webpack",
-    "start": "next start",
-    "logos": "node scripts/make-logos.mjs"
+    "start": "next start"
   },
   "engines": {
     "node": ">=20"

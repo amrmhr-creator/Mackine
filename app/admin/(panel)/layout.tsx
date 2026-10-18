@@ -26,7 +26,7 @@ export default async function PanelLayout({ children }: { children: React.ReactN
     <>
       <header className="admin-bar">
         <div className="wrap admin-bar-inner">
-          <strong>لوحة تحكم ماكين</strong>
+          <strong>لوحة تحكم مكين</strong>
           <nav>
             {NAV.map((n) => (
               <Link key={n.href} href={n.href}>

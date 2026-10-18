@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import Logo from "@/components/Logo";
 import { getSettings } from "@/lib/settings";
 import { NAV, SITE, whatsappLink } from "@/lib/site";
 
@@ -26,7 +26,7 @@ export default async function Header() {
       )}
       <div className="wrap nav">
         <Link href="/" className="brand" aria-label={`${SITE.name} - الرئيسية`}>
-          <Image src="/logo.png" alt={`${SITE.name} ${SITE.nameEn}`} width={180} height={47} priority />
+          <Logo />
         </Link>
         <nav aria-label="القائمة">
           <ul className="nav-links">

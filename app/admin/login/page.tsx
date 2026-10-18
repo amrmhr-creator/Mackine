@@ -1,8 +1,7 @@
-import Image from "next/image";
+import Logo from "@/components/Logo";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { adminEnabled, isAdmin } from "@/lib/admin-auth";
-import { SITE } from "@/lib/site";
 import { loginAction } from "../actions";
 
 export const metadata = { title: "دخول" };
@@ -14,7 +13,7 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ e
 
   return (
     <section className="admin-login">
-      <Image src="/logo.png" alt={SITE.name} width={180} height={47} />
+      <Logo />
       <h1>لوحة التحكم</h1>
       {!(await adminEnabled()) ? (
         <p className="notice">

@@ -7,7 +7,7 @@ import { getSettings } from "@/lib/settings";
 
 export const metadata: Metadata = {
   title: "تواصل معانا",
-  description: "اطلب عرض سعر من ماكين على قطع الغيار الصناعية: من الفورم أو على الواتساب.",
+  description: "اطلب عرض سعر من مكين على قطع الغيار الصناعية: من الفورم أو على الواتساب.",
 };
 
 export default async function ContactPage() {
