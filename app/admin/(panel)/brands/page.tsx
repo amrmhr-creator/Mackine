@@ -34,7 +34,7 @@ function BrandForm({ brand, categories, images }: { brand?: Brand; categories: C
       </fieldset>
       <label className="check">
         <input type="checkbox" name="visible" defaultChecked={brand ? brand.visible : true} />
-        ظاهرة على الموقع (علّم عليها بس لو ماكين بتوردها فعلاً)
+        ظاهرة على الموقع (علّم عليها بس لو مكين بتوردها فعلاً)
       </label>
       <button className="btn btn-red" type="submit">
         {brand ? "احفظ" : "ضيف الماركة"}
@@ -68,7 +68,7 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ s
       )}
       <p className="muted">
         الماركة بتظهر على الموقع (في الرئيسية وفي صفحات الأقسام بتاعتها) لما تكون «ظاهرة» بس. الماركات المكتوبة هنا من الأول
-        هي المشهورة في السوق وكلها مخفية: اظهر اللي ماكين بتوردها فعلاً.
+        هي المشهورة في السوق وكلها مخفية: اظهر اللي مكين بتوردها فعلاً.
       </p>
 
       <table className="admin-table">

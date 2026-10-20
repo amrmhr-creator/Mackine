@@ -1,7 +1,6 @@
-import Image from "next/image";
+import Logo from "@/components/Logo";
 import Link from "next/link";
 import { MIN_PASSWORD, resetTokenValid } from "@/lib/admin-accounts";
-import { SITE } from "@/lib/site";
 import ResetForm from "./ResetForm";
 
 export const metadata = { title: "باسورد جديد" };
@@ -13,7 +12,7 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ t
 
   return (
     <section className="admin-login">
-      <Image src="/logo.png" alt={SITE.name} width={180} height={47} />
+      <Logo />
       <h1>باسورد جديد</h1>
       {valid ? (
         <ResetForm token={token} minLength={MIN_PASSWORD} />

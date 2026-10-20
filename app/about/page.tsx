@@ -7,7 +7,7 @@ import { getSettings } from "@/lib/settings";
 
 export const metadata: Metadata = {
   title: "مين احنا",
-  description: "ماكين وسيط توريد لقطع الغيار الصناعية: رولمان بلي، وسيور، ونقل حركة، وقطع غيار المصانع.",
+  description: "مكين وسيط توريد لقطع الغيار الصناعية: رولمان بلي، وسيور، ونقل حركة، وقطع غيار المصانع.",
 };
 
 export default async function AboutPage() {
@@ -21,7 +21,7 @@ export default async function AboutPage() {
           {s.aboutStory.map((p) => (
             <p key={p.slice(0, 40)}>{p}</p>
           ))}
-          <h2>ليه ماكين</h2>
+          <h2>ليه مكين</h2>
           <div className="why">
             {s.homeWhy.map((w) => (
               <div key={w.title}>
