@@ -159,7 +159,7 @@ export async function saveCategoryAction(prev: FormState, formData: FormData): P
   const short = text(formData, "short", 200);
   const answer = text(formData, "answer", 1500);
   const icon = text(formData, "icon", 20) as IconName;
-  if (!name || !short || !answer) return fail("اكتب اسم القسم والسطر القصير والإجابة باختصار.");
+  if (!name || !short || !answer) return fail("اكتب اسم القسم والسطر القصير والفقرة الأولى.");
 
   if (types.some((t) => !t.title || !t.text)) return fail("كل نوع محتاج اسم وشرح (أو امسح السطر الفاضي).");
   if (faq.some((q) => !q.title || !q.text)) return fail("كل سؤال محتاج إجابة (أو امسح السطر الفاضي).");

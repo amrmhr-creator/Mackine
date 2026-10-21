@@ -48,7 +48,7 @@ export default function CategoryForm({ category, images }: { category?: Category
         <input name="short" required maxLength={200} defaultValue={v("short", c?.short)} />
       </label>
       <label>
-        الإجابة باختصار <small>(أول فقرة في صفحة القسم: القسم فيه إيه، وتبعتلنا إيه عشان تطلب. دي اللي جوجل والذكاء الاصطناعي بياخدوها)</small>
+        الفقرة الأولى <small>(أول فقرة في صفحة القسم: القسم فيه إيه، وتبعتلنا إيه عشان تطلب. دي اللي جوجل والذكاء الاصطناعي بياخدوها)</small>
         <textarea name="answer" required maxLength={1500} rows={5} defaultValue={v("answer", c?.answer)} />
       </label>
 
@@ -107,7 +107,7 @@ export default function CategoryForm({ category, images }: { category?: Category
 
       <details className="seo-fields">
         <summary>جوجل والمشاركة (اختياري)</summary>
-        <p className="muted small">لو سبتهم فاضيين، العنوان والوصف بيتعملوا لوحدهم من اسم القسم والإجابة باختصار.</p>
+        <p className="muted small">لو سبتهم فاضيين، العنوان والوصف بيتعملوا لوحدهم من اسم القسم والفقرة الأولى.</p>
         <label>
           العنوان في جوجل <small>(لحد 60 حرف)</small>
           <input name="seoTitle" maxLength={70} defaultValue={v("seoTitle", c?.seoTitle)} />

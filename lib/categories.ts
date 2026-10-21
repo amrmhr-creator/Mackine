@@ -40,7 +40,7 @@ export type Category = {
   icon: IconName;
   /** One line on the category card. */
   short: string;
-  /** "الإجابة باختصار": the first paragraph of the page (what AI answers quote). */
+  /** The first paragraph of the page (what AI answers quote). */
   answer: string;
   types: CategoryType[];
   /** Example part numbers / series, shown as tags. */

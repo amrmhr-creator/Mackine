@@ -33,7 +33,6 @@ export default function CategoryView({ c, brands }: { c: Category; brands: Brand
         <div className="wrap cat-page">
           <div className="cat-main">
             <div className="answer">
-              <h2>الإجابة باختصار</h2>
               <p>{c.answer}</p>
             </div>
 

@@ -237,7 +237,6 @@ section.tight { padding-block: 32px 0; }
 .cat-main { min-width: 0; }
 @media (max-width: 860px) { .cat-page { grid-template-columns: 1fr; } .cat-side { order: -1; } }
 .answer { background: var(--surface); border: 1px solid var(--line); border-inline-start: 4px solid var(--blue); border-radius: var(--radius); padding: 20px 22px; }
-.answer h2 { font-size: 16px; color: var(--red); margin-bottom: 6px; }
 .answer p { font-size: 17px; }
 .cat-main > .sub-head:first-of-type { margin-top: 36px; }
 .types { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
