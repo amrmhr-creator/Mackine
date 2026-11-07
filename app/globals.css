@@ -139,7 +139,14 @@ a { color: var(--blue); }
 .tile-line span { font-family: var(--display); font-size: 18px; color: var(--blue); }
 .tile-line small { color: var(--muted); font-size: 14px; }
 @media (max-width: 900px) { .bento { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 200px; } }
-@media (max-width: 520px) { .bento { grid-auto-rows: 170px; } .tile-big { grid-row: span 1; } .tile-big .tile-text p { display: none; } }
+/* Phones: tiles grow with their text and the picture gets a fixed strip, so the icon never sits on the name. */
+@media (max-width: 520px) {
+  .bento { grid-auto-rows: auto; }
+  .tile-big { grid-row: span 1; }
+  .tile-big .tile-text p { display: none; }
+  .tile-media { flex: none; height: 110px; overflow: hidden; }
+  .tile-big .cat-icon { width: 84px; height: 84px; }
+}
 .home-brands { padding-block: 56px; }
 .brand-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); border-top: 1px solid var(--line); border-inline-start: 1px solid var(--line); }
 .brand-grid li { min-height: 84px; border-bottom: 1px solid var(--line); border-inline-end: 1px solid var(--line); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: 8px; text-align: center; }
